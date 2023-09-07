@@ -33,13 +33,15 @@ class App extends Component {
       this.setState({ list: list });
     }
   };
-  add = () => {
+  add = async () => {
     if (this.state.inputText !== "") {
-      this.setState({ list: [...this.state.list, { key: Date.now().toString(), text: this.state.inputText, ok: false }], inputText: "" });
+      await this.setState({ list: [...this.state.list, { key: Date.now().toString(), text: this.state.inputText, ok: false }], inputText: "" });
+      console.log(this.state.inputText);
     }
   };
   enter = (e) => {
-    if (e.key === "Enter") {
+    console.log(e);
+    if (e.keyCode === 13) {
       this.add();
     }
   };
